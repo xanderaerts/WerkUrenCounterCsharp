@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WerkUrenCounterCsharp.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout VerticalOptions="Center">
+            <Button Text="{Binding startDayBtnText}" VerticalOptions="Center" HorizontalOptions="Center" Command="{Binding StartWorkDay}"/>
+            <Button Text="Overzicht" VerticalOptions="Center" HorizontalOptions="Center" Command="{Binding showOverview}"/>
+            <Button Text="Einde werkdag" VerticalOptions="Center" HorizontalOptions="Center" IsVisible="{Binding dayStarted}"/>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
