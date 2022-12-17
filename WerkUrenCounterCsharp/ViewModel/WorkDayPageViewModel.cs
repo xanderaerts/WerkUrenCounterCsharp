@@ -8,10 +8,8 @@ namespace WerkUrenCounterCsharp.ViewModel
 {
     public class WorkDayPageViewModel
     {
-        public int dayStarted {get;set;}
 
         public WorkDayPageViewModel() {
-            this.dayStarted = 0;
         }
     }
 }

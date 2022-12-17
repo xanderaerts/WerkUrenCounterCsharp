@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using WerkUrenCounterCsharp.Models;
 using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-using WerkUrenCounterCsharp.Models;
+using Newtonsoft.Json;
+using System.Text;
 
 namespace WerkUrenCounterCsharp.Services
 {
@@ -13,15 +9,27 @@ namespace WerkUrenCounterCsharp.Services
     {
         public List<WorkDayEvent> WorkDayEventList { get ; set ; }
 
+        private string apiUrl = "http://localhost:8080/api/WorkDayEvents/";
+
         public ApiDataStore()
         {
             this.WorkDayEventList = new List<WorkDayEvent>();
         }
 
-        public async Task<string> AddTotoDoAsync()
+       public  async Task<HttpResponseMessage> AddTotoDoAsync(WorkDayEvent wde)
         {
-            throw new NotImplementedException();
-            
+            HttpClient client = new HttpClient();
+
+            var json = System.Text.Json.JsonSerializer.Serialize<WorkDayEvent>(wde);
+
+            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+
+            var res = await client.PostAsync(apiUrl, content);
+
+
+           return res;
+
         }
 
         public Task<string> DeleteToDoAsync()
@@ -33,9 +41,11 @@ namespace WerkUrenCounterCsharp.Services
         {
             HttpClient client = new HttpClient();
 
-            String json = await client.GetStringAsync("http://localhost:8080/api/workdayevents/");
+            String json = await client.GetStringAsync(this.apiUrl);
 
-            this.WorkDayEventList = JsonSerializer.Deserialize<List<WorkDayEvent>>(json);
+            //this.WorkDayEventList = JsonSerializer.Deserialize<List<WorkDayEvent>>(json);
+
+            this.WorkDayEventList = JsonConvert.DeserializeObject<List<WorkDayEvent>>(json);
 
             return this.WorkDayEventList;
 

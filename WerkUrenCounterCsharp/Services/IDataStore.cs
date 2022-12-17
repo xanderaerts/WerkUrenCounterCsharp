@@ -13,7 +13,7 @@ namespace WerkUrenCounterCsharp.Services
         List<WorkDayEvent> WorkDayEventList { get; set; }
 
         Task<List<WorkDayEvent>> GetAllWorkDayEventsAsync();
-        Task<String> AddTotoDoAsync();
+        Task<HttpResponseMessage> AddTotoDoAsync(WorkDayEvent wde);
         Task<String> DeleteToDoAsync();
     }
 }

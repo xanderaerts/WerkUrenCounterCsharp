@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using WerkUrenCounterCsharp.Models;
 using WerkUrenCounterCsharp.Pages;
+using WerkUrenCounterCsharp.Services;
 
 
 namespace WerkUrenCounterCsharp.ViewModel
@@ -12,6 +10,7 @@ namespace WerkUrenCounterCsharp.ViewModel
     class MainPageViewModel: INotifyPropertyChanged
     {
         INavigation nav;
+        private IDataStore _IDataStore => DependencyService.Get<IDataStore>();
 
         private String _startDayBtnText = "Start dag";
 
@@ -58,6 +57,14 @@ namespace WerkUrenCounterCsharp.ViewModel
         public async void goToWorkDayPage() {
             this.startDayBtnText = "Huidige dag";
             this.dayStarted = true;
+
+
+            DateTime date = DateTime.Now;
+
+            WorkDayEvent newWde = new WorkDayEvent("Xander",date,date,WorkDayEventAction.StartDay); 
+
+            await this._IDataStore.AddTotoDoAsync(newWde);
+
             await this.nav.PushAsync(new WorkDayPage());
         }
     }
