@@ -35,6 +35,8 @@ namespace WerkUrenCounterCsharp.ViewModel
 
         public Command StartWorkDay { get; }
         public Command showOverview { get; }
+        
+        public Command EndWorkDayCommand { get; }
 
 
         public MainPageViewModel(INavigation nav) {
@@ -44,6 +46,7 @@ namespace WerkUrenCounterCsharp.ViewModel
 
             StartWorkDay = new Command(goToWorkDayPage);
             showOverview = new Command(goToOverview);
+            EndWorkDayCommand = new Command(EndWorkDay);
             this.nav = nav;
         }
 
@@ -67,6 +70,18 @@ namespace WerkUrenCounterCsharp.ViewModel
             }
 
             await this.nav.PushAsync(new WorkDayPage());
+        }
+
+        public async void EndWorkDay() {
+            DateTime date = DateTime.Now;
+
+            date = date.AddHours(1);
+
+            WorkDayEvent wde = new WorkDayEvent(date, WorkDayEventAction.EndDay);
+            await this._IDataStore.AddWorkDayEventAsync(wde);
+
+            this.dayStarted = false;
+            this.startDayBtnText = "Start Dag";
         }
     }
 }
