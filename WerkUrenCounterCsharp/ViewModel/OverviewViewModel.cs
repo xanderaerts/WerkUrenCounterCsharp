@@ -28,12 +28,13 @@ namespace WerkUrenCounterCsharp.ViewModel
         }
 
 
-        private async void updatelist(IEnumerable<WorkDayEvent>wde) {
+        private void updatelist(IEnumerable<WorkDayEvent>wde) {
             this.workdayevents.Clear();
 
             foreach (WorkDayEvent w in wde) {
                 this.workdayevents.Add(w);
             }
         }
+
     }
 }

@@ -23,8 +23,6 @@ namespace WerkUrenCounterCsharp.ViewModel
             }
         }
 
-        
-
         public event PropertyChangedEventHandler PropertyChanged;
 
         public String startDayBtnText { 
@@ -56,14 +54,16 @@ namespace WerkUrenCounterCsharp.ViewModel
 
         public async void goToWorkDayPage() {
             this.startDayBtnText = "Huidige dag";
-            this.dayStarted = true;
 
+            if (!dayStarted)
+            {
+                this.dayStarted = true;
+                DateTime date = DateTime.Now;
 
-            DateTime date = DateTime.Now;
+                WorkDayEvent newWde = new WorkDayEvent(date, WorkDayEventAction.StartDay);
 
-            WorkDayEvent newWde = new WorkDayEvent("Xander",date,date,WorkDayEventAction.StartDay); 
-
-            await this._IDataStore.AddTotoDoAsync(newWde);
+                await this._IDataStore.AddWorkDayEventAsync(newWde);
+            }
 
             await this.nav.PushAsync(new WorkDayPage());
         }

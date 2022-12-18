@@ -4,6 +4,7 @@
              x:Class="WerkUrenCounterCsharp.Pages.WorkDayPage"
              Title="Werkdag">
     <VerticalStackLayout>
-        
+        <Button Text="{Binding changeStateButtonText}" VerticalOptions="Center" HorizontalOptions="Center" Command="{Binding changeStateButton}"/>
+        <Label Text="{Binding driveHoursLeftLabel}" VerticalOptions="Center" HorizontalOptions="Center"/>
     </VerticalStackLayout>
 </ContentPage>

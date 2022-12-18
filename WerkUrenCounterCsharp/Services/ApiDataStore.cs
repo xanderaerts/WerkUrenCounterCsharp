@@ -9,6 +9,7 @@ namespace WerkUrenCounterCsharp.Services
     {
         public List<WorkDayEvent> WorkDayEventList { get ; set ; }
 
+       // private string apiUrl = "http://10.0.2.2:8080/api/WorkDayEvents/";
         private string apiUrl = "http://localhost:8080/api/WorkDayEvents/";
 
         public ApiDataStore()
@@ -16,7 +17,7 @@ namespace WerkUrenCounterCsharp.Services
             this.WorkDayEventList = new List<WorkDayEvent>();
         }
 
-       public  async Task<HttpResponseMessage> AddTotoDoAsync(WorkDayEvent wde)
+       public  async Task<HttpResponseMessage> AddWorkDayEventAsync(WorkDayEvent wde)
         {
             HttpClient client = new HttpClient();
 
@@ -32,7 +33,15 @@ namespace WerkUrenCounterCsharp.Services
 
         }
 
-        public Task<string> DeleteToDoAsync()
+        public async Task<WorkDayEvent> GetLatestWorkDayEventAsync() {
+            HttpClient client = new HttpClient();
+
+            String json = await client.GetStringAsync(this.apiUrl + "latest");
+
+            return JsonConvert.DeserializeObject<WorkDayEvent>(json);
+        }
+
+        public Task<string> DeleteWorkDayEventAsync()
         {
             throw new NotImplementedException();
         }
@@ -50,5 +59,6 @@ namespace WerkUrenCounterCsharp.Services
             return this.WorkDayEventList;
 
         }
+
     }
 }

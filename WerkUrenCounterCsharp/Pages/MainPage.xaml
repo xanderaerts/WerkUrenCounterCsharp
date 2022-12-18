@@ -3,12 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WerkUrenCounterCsharp.MainPage">
 
-    <ScrollView>
-        <VerticalStackLayout VerticalOptions="Center">
-            <Button Text="{Binding startDayBtnText}" VerticalOptions="Center" HorizontalOptions="Center" Command="{Binding StartWorkDay}"/>
-            <Button Text="Overzicht" VerticalOptions="Center" HorizontalOptions="Center" Command="{Binding showOverview}"/>
-            <Button Text="Einde werkdag" VerticalOptions="Center" HorizontalOptions="Center" IsVisible="{Binding dayStarted}"/>
-        </VerticalStackLayout>
-    </ScrollView>
+    <VerticalStackLayout VerticalOptions="Center">
+        <Button Text="{Binding startDayBtnText}" VerticalOptions="Center" HorizontalOptions="Center" Command="{Binding StartWorkDay}"/>
+        <Button Text="Overzicht" VerticalOptions="Center" HorizontalOptions="Center" Command="{Binding showOverview}"/>
+        <Button Text="Einde werkdag" VerticalOptions="Center" HorizontalOptions="Center" IsVisible="{Binding dayStarted}"/>
+    </VerticalStackLayout>
 
 </ContentPage>
