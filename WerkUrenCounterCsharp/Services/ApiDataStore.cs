@@ -41,6 +41,15 @@ namespace WerkUrenCounterCsharp.Services
             return JsonConvert.DeserializeObject<WorkDayEvent>(json);
         }
 
+        public async Task<List<WorkDayEvent>> GetAllWorkDayEventsTodayAsync() {
+            HttpClient client = new HttpClient();
+
+            String json = await client.GetStringAsync(this.apiUrl + "today");
+
+
+            return JsonConvert.DeserializeObject<List<WorkDayEvent>>(json);
+        }
+
         public Task<string> DeleteWorkDayEventAsync()
         {
             throw new NotImplementedException();

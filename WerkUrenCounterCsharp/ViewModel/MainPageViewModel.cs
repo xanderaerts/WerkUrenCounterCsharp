@@ -59,6 +59,7 @@ namespace WerkUrenCounterCsharp.ViewModel
             {
                 this.dayStarted = true;
                 DateTime date = DateTime.Now;
+                date = date.AddHours(1);
 
                 WorkDayEvent newWde = new WorkDayEvent(date, WorkDayEventAction.StartDay);
 

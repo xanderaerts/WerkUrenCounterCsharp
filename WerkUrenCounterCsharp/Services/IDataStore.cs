@@ -17,6 +17,8 @@ namespace WerkUrenCounterCsharp.Services
 
         Task<WorkDayEvent> GetLatestWorkDayEventAsync();
 
+        Task<List<WorkDayEvent>> GetAllWorkDayEventsTodayAsync();
+
         Task<String> DeleteWorkDayEventAsync();
     }
 }

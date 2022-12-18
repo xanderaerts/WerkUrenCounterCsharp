@@ -5,6 +5,9 @@
              Title="Werkdag">
     <VerticalStackLayout>
         <Button Text="{Binding changeStateButtonText}" VerticalOptions="Center" HorizontalOptions="Center" Command="{Binding changeStateButton}"/>
-        <Label Text="{Binding driveHoursLeftLabel}" VerticalOptions="Center" HorizontalOptions="Center"/>
+        <Label Text="{Binding currentHours}" VerticalOptions="Center" HorizontalOptions="Center" Padding="20"/>
+
+        <Label Text="{Binding totalDriveHoursLabel}" VerticalOptions="Center" HorizontalOptions="Center" Padding="50"/>
+        <Label Text="{Binding totalRestHoursLabel}" VerticalOptions="Center" HorizontalOptions="Center"/>
     </VerticalStackLayout>
 </ContentPage>
