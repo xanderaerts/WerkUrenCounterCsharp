@@ -5,13 +5,22 @@
              Title="Overview">
     <VerticalStackLayout>
         <ScrollView>
-        <ListView ItemsSource="{Binding workdayevents}">
-            <ListView.ItemTemplate>
+        <ListView ItemsSource="{Binding daytotals}">
+              <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Label Text="{Binding StartEvent}"/>
-                        <Label Text="{Binding Action}"/>
-                    </ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding date}" Grid.Column="0" />
+                                <Label Text="{Binding totalDriveHours}" Grid.Column="1" />
+                                <Label Text="{Binding totalRestHours}" Grid.Column="2"/>
+                            </Grid>
+                        </ViewCell>
+                        
                 </DataTemplate>
             </ListView.ItemTemplate>
             

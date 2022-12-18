@@ -7,12 +7,12 @@ using WerkUrenCounterCsharp.Services;
 
 namespace WerkUrenCounterCsharp.ViewModel
 {
-    class MainPageViewModel: INotifyPropertyChanged
+    public class MainPageViewModel: INotifyPropertyChanged
     {
         INavigation nav;
         private IDataStore _IDataStore => DependencyService.Get<IDataStore>();
 
-        private String _startDayBtnText = "Start dag";
+        public String _startDayBtnText = "Start dag";
 
         public Boolean _dayStarted = false;
         public Boolean dayStarted {

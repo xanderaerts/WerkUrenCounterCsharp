@@ -7,7 +7,7 @@ namespace WerkUrenCounterCsharp;
 
 public partial class MainPage : ContentPage
 {
-	MainPageViewModel vm;
+	public MainPageViewModel vm;
 
 	public MainPage()
 	{
